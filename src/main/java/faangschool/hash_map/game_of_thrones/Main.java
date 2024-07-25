@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Main {
+
     public static HashMap<String, House> housesOfWesteros = new HashMap<>();
 
     public static void main(String[] args) {

@@ -1,8 +1,8 @@
 package faangschool.hash_map.game_of_thrones;
 
 public class House {
-    private String name;
-    private String sigil;
+    private final String name;
+    private final String sigil;
 
     public House(String name, String sigil) {
         this.name = name;
