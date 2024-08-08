@@ -53,6 +53,10 @@ public class Main {
             log.error("Book is null and cannot be found.");
             return null;
         }
+        if (!library.containsKey(book)) {
+            log.warn("There is no such book in the library");
+            return null;
+        }
         String location = library.get(book);
 
         if (location != null) {
