@@ -8,6 +8,6 @@ public class Main {
         String lumos = "Lumos";
         String expelliarmus = "Expelliarmus";
 
-        spellCaster.cast(alohomora, (spell) -> "Casting spell: " + spell);
+        spellCaster.cast(alohomora, spell -> "Spelling: " + spell);
     }
 }

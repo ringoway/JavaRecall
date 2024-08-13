@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 public class SpellCaster {
     public void cast(String spell, SpellAction action) {
-        System.out.println(action.castSpell(spell));
+        String result = action.spellCast(spell);
+        System.out.println(result);
     }
 }
