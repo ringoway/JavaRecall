@@ -11,6 +11,6 @@ public class NotificationManager {
     }
     public void sendNotification (Notification notification) {
         Consumer<Notification> notificationConsumer = identification.get(notification.getType());
-        registerHandler(notification.getType(), notificationConsumer);
+        notificationConsumer.accept(notification);
     }
 }
