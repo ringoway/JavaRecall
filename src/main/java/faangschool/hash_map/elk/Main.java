@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
-    public static HashMap<User, List<Query>> userRequests = new HashMap<>();
+    public static Map<User, List<Query>> userRequests = new HashMap<>();
 
     public static void main(String[] args) {
         User joe = new User(1, "Joe");
@@ -38,11 +38,10 @@ public class Main {
 
 
     public static void addNewQuery(User user, Query query) {
-        if (!(user == null || query == null)) {
-            List<Query> queries = userRequests.get(user);
+        if (user != null || query != null) {
+            List<Query> queries = userRequests.putIfAbsent(user, new ArrayList<>());
             if (queries == null) {
-                queries = new ArrayList<>();
-                userRequests.put(user, queries);
+                queries = userRequests.get(user);
             }
             queries.add(query);
         }
@@ -56,7 +55,12 @@ public class Main {
 
     public static void printAllUsersAndQueries() {
         for (Map.Entry<User, List<Query>> userListEntry : userRequests.entrySet()) {
-            System.out.println(userListEntry);
+            User user = userListEntry.getKey();
+            List<Query> queries = userListEntry.getValue();
+            System.out.println("User: " + user.getName() + " (ID: " + user.getId() + ")");
+            for (Query query : queries) {
+                System.out.println("\tQuery ID: " + query.getId() + ", Content: " + query.getContent() + ", Timestamp: " + query.getTimestamp());
+            }
         }
     }
 }
