@@ -9,9 +9,8 @@ public class NotificationManager {
     public void registerHandler (String type, Consumer<Notification> notificationConsumer) {
         if (type == null && type.isEmpty()) {
             throw new IllegalArgumentException("Пустой тип оповещения");
-        } else {
-            map.put(type, notificationConsumer);
         }
+        map.put(type, notificationConsumer);
     }
     public void sendNotification (Notification notification) {
         Consumer<Notification> notificationConsumer = map.get(notification.getType());
